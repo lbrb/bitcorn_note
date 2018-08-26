@@ -139,3 +139,15 @@
    geth --datadir /e/eth/b init ./genesis.json //同一个区块链上的genesis.json必须一样
    geth --datadir /e/eth/b --networkid 22 --nodiscover --port 30306 --rpc --rpcport 9545 --ipcdisable console
    ```
+
+8. 连接两个节点
+
+   ```bash
+   //从其中一个节点中获得enode
+   >admin.nodeInfo.enode
+   "enode://a690738d5a7a079bcf4b38371f28d168317c9da9652c41c14ec123d6f4f1b13d3153b72fbe158ad39fc92d95403c5e17b510d71dfdf47a6a3aad7a182c1cd999@[::]:30303?discport=0"
+   //在另一个节点环境添加peer
+   admin.addPeer("enode://a690738d5a7a079bcf4b38371f28d168317c9da9652c41c14ec123d6f4f1b13d3153b72fbe158ad39fc92d95403c5e17b510d71dfdf47a6a3aad7a182c1cd999@[::]:30303?discport=0")
+   ```
+
+
