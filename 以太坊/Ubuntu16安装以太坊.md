@@ -47,6 +47,25 @@
    ./build/bin/geth
    ```
 
+5. geth常用参数：
+   - --rpc 开启HTTP-RPC服务
+   - -–rpcaddr 指定HTTP-RPC服务的地址，默认是localhost
+   - -–port 网络监听的端口，默认为8545
+   - -–rpccorsdomain 逗号分隔的域列表，指定HTTP-RPC服务允许从哪些域过来的跨域请求，*接受表示所有的域
+   - -–rpcapi 设定开放给HTTP-RPC的接口，默认只开放eth、net、web3
+   - --ws 启用WebSockets-RPC服务
+   - –-wsaddr 指定WebSockets-RPC服务地址，默认值localhost
+   - -–wsport 指定WebSockets-RPC服务端口，默认值8546
+   - -–wsapi 通过WebSockets-RPC提供的API，默认eth, net, web3
+   - -–wsorigins 指定WebSockets-RPC服务允许从哪些域过来的跨域请求，*表示接受表示所有的域
+   - -–datadir 设置当前区块链网络数据存放的位置
+   - -–identity 区块链的标识，用于标识目前网络的名字
+   - -–networkid 设置当前区块链的网络 ID，用于区分不同的网络，默认是1
+   - -–nodiscover 禁止网络中的对等节点发现你的节点。如果打算在本地网络中与其他人一起使用该私有区块链，就请不要使用此参数。 –dev console 开启一个可交互的JavaScript Console
+   - -–ipcdisable 禁用IPC-RPC服务
+   - -–ipcapi 通过IPC-RPC接口提供的API，默认值admin, debug, eth, miner, net, personal, shh, txpool, web3
+   - -–ipcpath 指定IPC路径
+
 ### 私链搭建
 
 1. 定义创世状态, 修改nonce防止和其他节点链接到你
@@ -107,3 +126,16 @@
    geth --datadir=datadir --bootnodes=enode://66abf9b6ff7cbbd6bde7312752dabd43cbaccd75a6af4e2560bc210817d032fd333189e4eb95b69a4beda2c304626d9509ef01662780c162c6ea5da7a22637c8@192.168.235.130:30301
    ```
 
+6. 启动一个节点
+
+   ```bash
+   geth --datadir /e/eth/a init ./genesis.json
+   geth --datadir /e/eth/a --networkid 22 --nodiscover console
+   ```
+
+7. 启动第二个节点
+
+   ```bash
+   geth --datadir /e/eth/b init ./genesis.json //同一个区块链上的genesis.json必须一样
+   geth --datadir /e/eth/b --networkid 22 --nodiscover --port 30306 --rpc --rpcport 9545 --ipcdisable console
+   ```
