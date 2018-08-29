@@ -75,7 +75,7 @@
    ``` json
    {
      "config": {
-           "chainId": 0,
+           "chainId": 11,
            "homesteadBlock": 0,
            "eip155Block": 0,
            "eip158Block": 0
@@ -130,14 +130,14 @@
 
    ```bash
    geth --datadir /e/eth/a init ./genesis.json
-   geth --datadir /e/eth/a --networkid 22 --nodiscover console
+   geth --datadir ./datadir/a --networkid 22 --nodiscover --port 30303 --c --rpcport 8545 --rpcaddr 0.0.0.0 --ipcdisable console
    ```
 
 7. 启动第二个节点
 
    ```bash
    geth --datadir /e/eth/b init ./genesis.json //同一个区块链上的genesis.json必须一样
-   geth --datadir /e/eth/b --networkid 22 --nodiscover --port 30306 --rpc --rpcport 9545 --ipcdisable console
+   geth --datadir ./datadir/b --networkid 22 --nodiscover --port 30306 --c --rpcport 8546 --rpcaddr 0.0.0.0 --ipcdisable console
    ```
 
 8. 连接两个节点
