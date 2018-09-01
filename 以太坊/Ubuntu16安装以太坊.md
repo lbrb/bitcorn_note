@@ -137,7 +137,7 @@
 
    ```bash
    geth --datadir /e/eth/b init ./genesis.json //同一个区块链上的genesis.json必须一样
-   geth --datadir ./datadir/b --networkid 22 --nodiscover --port 30306 --c --rpcport 8546 --rpcaddr 0.0.0.0 --ipcdisable console
+    geth --datadir ./datadir/a --networkid 23 --nodiscover --port 30303 --rpc --rpccorsdomain "*" --rpcport 8545 --rpcaddr 0.0.0.0 --ipcdisable console
    ```
 
 8. 连接两个节点
